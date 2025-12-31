@@ -1,0 +1,199 @@
+.pantalla {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SOBRE */
+.sobre {
+  width: 320px;
+  height: 200px;
+  background: url("sobre.jpg") center / contain no-repeat;
+  position: relative;
+}
+
+/* BOTÓN ABRIR */
+.btn-abrir {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* CARTA */
+.container {
+  position: relative;
+  z-index: 2;
+
+  width: 92%;
+  max-width: 720px;
+  margin: 25px auto;
+
+  /* 👇 IMAGEN DE CARTA ANTIGUA */
+  background: url("carta-antigua.jpg") center / cover no-repeat;
+
+  padding: 90px 70px 80px; /* espacio tipo carta real */
+  border-radius: 12px;
+
+  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+
+  display: none;
+  animation: aparecer 0.8s ease;
+  filter: sepia(12%) contrast(1.05);
+}
+
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.header h1 {
+  color: #2e7d32;          /* café antiguo */
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.header p {
+  color: #2e7d32;
+  font-size: 14px;
+}
+
+.content {
+  margin-top: 35px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #4b2f1a;          /* tinta antigua */
+}
+
+.signature strong {
+  color: #6b3e1e;
+}
+
+.footer {
+  color: #6b5a4a;
+}
+
+.header::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  background-color: #2e7d32;
+  margin: 15px auto 0;
+  animation: lineGrow 1.2s ease forwards;
+}
+
+@keyframes lineGrow {
+  to { width: 120px; }
+}
+
+/* CONTENIDO */
+.content {
+  margin-top: 25px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.content p {
+  margin-bottom: 15px;
+}
+
+.signature {
+  margin-top: 35px;
+}
+
+.signature strong {
+  color: #2e7d32;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 35px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+/* RESPONSIVE */
+@media (min-width: 600px) {
+  .header h1 { font-size: 30px; }
+  .content { font-size: 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FONDO -->
+<div class="fondo-animado"></div>
+
+<!-- SOBRE -->
+<div class="pantalla" id="pantalla">
+  <div class="sobre">
+    <button class="btn-abrir" id="openButton">Abrir carta</button>
+  </div>
+</div>
+
+<!-- CARTA -->
+<div class="container" id="carta">
+  <div class="header">
+    <h1>Agro Servicios 3HR</h1>
+    <p>Comprometidos con el crecimiento del campo</p>
+  </div>
+
+  <div class="content">
+    <p>Estimados clientes, colaboradores y amigos:</p>
+    <p>Al finalizar este año, en <strong>Agro Servicios 3HR</strong> agradecemos profundamente la confianza y el acompañamiento recibido en cada proyecto.</p>
+    <p>Seguimos trabajando con compromiso, innovación y responsabilidad para aportar al desarrollo del sector agropecuario.</p>
+    <p>En el nuevo año continuaremos creciendo junto a ustedes, enfrentando nuevos desafíos y cosechando logros compartidos.</p>
+    <p>Les deseamos un feliz cierre de año y un próspero año nuevo lleno de salud, trabajo y oportunidades.</p>
+
+    <div class="signature">
+      <p>Atentamente,</p>
+      <p><strong>Equipo de Agro Servicios 3HR</strong></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Agro Servicios 3HR · Todos los derechos reservados
+  </div>
+</div>
+
+<!-- MÚSICA -->
+<audio id="music">
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const openButton = document.getElementById('openButton');
+const pantalla = document.getElementById('pantalla');
+const carta = document.getElementById('carta');
+const music = document.getElementById('music');
+
+openButton.addEventListener('click', () => {
+  pantalla.style.display = 'none';
+  carta.style.display = 'block';
+  music.play();
+});
+</script>
+
+</body>
+</html>
